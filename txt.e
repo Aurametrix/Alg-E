@@ -35,9 +35,9 @@ FIELD_NAME = VALUE;
 //<'
 struct txt {
 
-    // fields of data model for txt
-   sender: uint;
-   receiver: uint;
+    // fields of data model for txt, 34 bit integer
+   sender :    uint (bits:34);
+   receiver :  uint (bits:34);
 
 //constraints
     keep smallest_sender_phone is sender >= 100_000_0000;
