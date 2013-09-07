@@ -5,6 +5,7 @@ as well as features for easy bit-level manipulation similar to those found in HD
 
 E is a hardware verification language (HVL) which is tailored to implementing highly 
 flexible and reusable verification testbenches.
+http://www.eda.org/twiki/bin/view.cgi/P1647/WebHome
 ==================================================
 Anything outside the markers is a comment
 <'

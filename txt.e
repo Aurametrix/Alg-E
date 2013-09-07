@@ -10,7 +10,13 @@ Field name: message
 Type: string
 Value: "This is a test!"
 ----------------------------------------
+Add constraints to limit phone number values
+max_number : 999_999_9999
+min_number : 100_000_0000
+constraint name : user choice
 
+SYNTAX
+keep CONSTRAINT_NAME is BOOLEAN_EXPRESSION;
 ----------------------------------------
 SYNTAX: field declaration
 (statement, can only be done in structs)
@@ -32,17 +38,27 @@ struct txt {
     // fields of data model for txt
    sender: uint;
    receiver: uint;
+
+//constraints
+    keep smallest_sender_phone is sender >= 100_000_0000;
+    keep largest_sender_phone is sender<= 999_999_9999;
+    
+    keep smallest_receiver_phone is receiver >= 100_000_0000;
+    keep largest_receiver_phone is receiver <= 999_999_9999;  
+
+
    message: string;
    
-   unit sender, receiver;
-   string message;
-
     // this is a method with no parameters
     fill() is {
-        // assignments
+        // if sender and receiver are not initialized, numbers are random
+    
+//    sender = 212_555_0123;
+//    receiver = 408_555_0199;
+    
+    
     message="This is a test!";
-    sender = 212_555_0123;
-    receiver = 408_555_0199;
+    
     };
 
 };
