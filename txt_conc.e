@@ -2,11 +2,11 @@ message can't exceed 140 characters
 
 
 <'
-
+    type pseudo_word_t : [OMG, LOL, BRB, PLS, ASAP, cool]; 
     type phone_number :  uint (bits:34) [100_000_0000..900_000_0000];
     
-    // dynamic class with four fields
-    struct call{
+    // dynamic class txt
+    struct txt{
 
 
    // fields
@@ -18,15 +18,20 @@ message can't exceed 140 characters
 
    
     fill() is {
-    var number : byte [0..9]
-    for IT from 1 to msg_size do {
-    gen number;
-    //string event: append to message
-    message = append(message, number);
+    var word : pseudo_word_t
     
-    };
+    while TRUE do {
+         gen word;
+         if (str_len(message) + 1 + str_len(word.as_a(string)) <= msg_size) {
+            message = append(message, word.to_string(), " ");
+	     } else {
+            break;
+         };
+      };
+   };
 
-
+	
 };
-'>
 
+
+'>
